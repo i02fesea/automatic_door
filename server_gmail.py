@@ -60,14 +60,9 @@ conn.select('Inbox') # ,readonly=1)
  # fetching emails from this user "tu**h*****1@gmail.com"
 msgs = get_emails('FROM', email_to_search, conn)
 
-# Uncomment this to see what actually comes as data
-# print(msgs)
-
-
 # Finding the required content from our msgs
 # User can make custom changes in this part to
 # fetch the required content he / she needs
-
 # printing them by the order they are displayed in your gmail
 for msg in msgs[::-1]:
     for sent in msg:
