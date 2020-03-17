@@ -5,8 +5,8 @@ imap_url = 'imap.gmail.com'
 email_to_search = 'antonio.fernandez@neonode.com'
 
 f = open("./data/config.txt", "r")
-user = f.readline()
-password = f.readline()
+user = f.readline().replace('\n', '')
+password = f.readline().replace('\n', '')
 f.close()
 
 # Function to get email content part i.e its body part
@@ -64,23 +64,23 @@ msgs = get_emails('FROM', email_to_search, conn)
 # User can make custom changes in this part to
 # fetch the required content he / she needs
 # printing them by the order they are displayed in your gmail
-for msg in msgs[::-1]:
-    for sent in msg:
-        if type(sent) is tuple:
-
-            # encoding set as utf-8
-            content = str(sent[1], 'utf-8')
-            data = str(content)
-
-            # Handling errors related to unicodenecode
-            try:
-                indexstart = data.find("ltr")
-                data2 = data[indexstart + 5: len(data)]
-                indexend = data2.find("</div>")
-
-                # printtng the required content which we need
-                # to extract from our email i.e our body
-                print(data2[0: indexend])
-
-            except UnicodeEncodeError as e:
-                pass
+# for msg in msgs[::-1]:
+#     for sent in msg:
+#         if type(sent) is tuple:
+#
+#             # encoding set as utf-8
+#             content = str(sent[1], 'utf-8')
+#             data = str(content)
+#
+#             # Handling errors related to unicodenecode
+#             try:
+#                 indexstart = data.find("ltr")
+#                 data2 = data[indexstart + 5: len(data)]
+#                 indexend = data2.find("</div>")
+#
+#                 # printtng the required content which we need
+#                 # to extract from our email i.e our body
+#                 print(data2[0: indexend])
+#
+#             except UnicodeEncodeError as e:
+#                 pass
